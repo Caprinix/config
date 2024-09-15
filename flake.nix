@@ -11,6 +11,8 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
+    impermanence.url = "github:nix-community/impermanence";
+
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -25,7 +27,10 @@
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         disko.nixosModules.disko
+        impermanence.nixosModules.impermanence
       ];
+
+      homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
 
       snowfall = rec {
         namespace = "caprinix";
