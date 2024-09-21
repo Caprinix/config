@@ -7,6 +7,7 @@ in
 {
   imports = [
     ./nix.nix
+    ./users.nix
   ];
 
   config = {
