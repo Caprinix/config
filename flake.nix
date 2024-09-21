@@ -42,6 +42,10 @@
       };
     in
     lib.mkFlake {
+      channels-config = {
+        allowUnfree = true;
+      };
+
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         disko.nixosModules.disko
@@ -52,3 +56,4 @@
       homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
     };
 }
+    
