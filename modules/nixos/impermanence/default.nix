@@ -10,9 +10,12 @@ let
   cfg = config.caprinix.impermanence;
 in
 {
+  imports = [ ./persistence.nix ];
+
   options.caprinix.impermanence = {
     enable = mkEnableOption "impermanence";
   };
+
   config = mkIfEnabled cfg {
     boot.initrd.postDeviceCommands = mkAfter ''
       mkdir /btrfs_tmp
@@ -37,6 +40,10 @@ in
     '';
 
     fileSystems."/persistent".neededForBoot = true;
+
+    systemd.user.tmpfiles.rules = [
+      "D /persistent/home 777 root root -"
+    ];
 
     programs.fuse.userAllowOther = true;
   };
