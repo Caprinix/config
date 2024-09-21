@@ -56,4 +56,3 @@
       homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
     };
 }
-    
