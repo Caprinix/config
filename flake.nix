@@ -25,11 +25,23 @@
 
   outputs =
     inputs:
-    inputs.snowfall-lib.mkFlake {
-      inherit inputs;
+    let
+      lib = inputs.snowfall-lib.mkLib {
+        inherit inputs;
 
-      src = ./.;
+        src = ./.;
 
+        snowfall = rec {
+          namespace = "caprinix";
+
+          meta = {
+            name = namespace;
+            title = namespace;
+          };
+        };
+      };
+    in
+    lib.mkFlake {
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         disko.nixosModules.disko
@@ -38,14 +50,5 @@
       ];
 
       homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
-
-      snowfall = rec {
-        namespace = "caprinix";
-
-        meta = {
-          name = namespace;
-          title = namespace;
-        };
-      };
     };
 }
