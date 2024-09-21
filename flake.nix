@@ -13,32 +13,47 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
+    # region caprinix 
+    caprinix-secrets.url = "git+ssh://git@github.com/caprinix/secrets.git";
+    caprinix-secrets.inputs.nixpkgs.follows = "nixpkgs";
+    caprinix-secrets.inputs.snowfall-lib.follows = "snowfall-lib";
+
+    # region misc
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
     inputs:
-    inputs.snowfall-lib.mkFlake {
-      inherit inputs;
+    let
+      lib = inputs.snowfall-lib.mkLib {
+        inherit inputs;
 
-      src = ./.;
+        src = ./.;
+
+        snowfall = rec {
+          namespace = "caprinix";
+
+          meta = {
+            name = namespace;
+            title = namespace;
+          };
+        };
+      };
+    in
+    lib.mkFlake {
+      channels-config = {
+        allowUnfree = true;
+      };
 
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         disko.nixosModules.disko
         impermanence.nixosModules.impermanence
+        caprinix-secrets.nixosModules.secrets
       ];
 
       homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
-
-      snowfall = rec {
-        namespace = "caprinix";
-
-        meta = {
-          name = namespace;
-          title = namespace;
-        };
-      };
     };
 }
+    
