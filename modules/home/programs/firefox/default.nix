@@ -10,6 +10,7 @@ let
   cfg = config.caprinix.programs.firefox;
 
   preferences = import ./preferences.nix;
+  extensionSettings = import ./extension-settings.nix;
 in
 {
   options.caprinix.programs.firefox = {
@@ -36,6 +37,7 @@ in
             Cryptomining = true;
             Fingerprinting = true;
           };
+          ExtensionSettings = extensionSettings;
           OfferToSaveLogins = false;
           PasswordManagerEnabled = false;
           Preferences = preferences;
