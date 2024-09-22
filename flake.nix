@@ -54,6 +54,7 @@
       ];
 
       homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
+
+      outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
     };
 }
-    
