@@ -180,6 +180,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1727017850,
+        "narHash": "sha256-C361iPL0hyKNbCRpkU4MbaoGCN2Z1Tc3dqfO/0sbnKk=",
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "d65b8378613424be887a23730febc25a7a06c337",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nur",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "caprinix-secrets": "caprinix-secrets",
@@ -187,6 +202,7 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs_2",
+        "nur": "nur",
         "snowfall-lib": "snowfall-lib"
       }
     },
