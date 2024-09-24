@@ -34,7 +34,12 @@ in
           ClientAliveInterval 300
         '';
       };
-      fail2ban = enabled;
+      fail2ban = enabled // {
+        bantime-increment = enabled // {
+          overalljails = true;
+          rndtime = "15m";
+        };
+      };
     };
   };
 }
