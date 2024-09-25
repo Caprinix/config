@@ -25,7 +25,7 @@ in
       services = {
         openssh = enabled;
       };
-      };
+    };
 
     users.users.replicapra = {
       openssh.authorizedKeys.keys = catAttrs "sshPublicKey" (

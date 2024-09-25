@@ -57,7 +57,7 @@
 
       homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
 
-      overlays = with inputs; [ 
+      overlays = with inputs; [
         nur.overlay
       ];
 
