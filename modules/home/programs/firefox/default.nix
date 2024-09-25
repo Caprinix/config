@@ -13,7 +13,7 @@ let
 
   preferences = import ./preferences.nix;
   extensionSettings = import ./extension-settings.nix;
-  profiles = fs.get-nix-files-recursive ./profiles;
+  profileFiles = fs.get-nix-files-recursive ./profiles;
   getName = file: path.get-file-name-without-extension file;
   firefox-addons = pkgs.nur.repos.rycee.firefox-addons;
 in
@@ -60,7 +60,7 @@ in
           map (profile: {
             name = getName profile;
             value = import profile { inherit firefox-addons; };
-          }) profiles
+          }) profileFiles
         );
       };
     };
