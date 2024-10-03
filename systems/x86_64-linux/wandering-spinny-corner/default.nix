@@ -32,5 +32,9 @@ in
         attrValues (getAttrs [ "wandering-woof-scorebook" ] systems)
       );
     };
+
+    virtualisation.podman = enabled // {
+      dockerCompat = true;
+    };
   };
 }
