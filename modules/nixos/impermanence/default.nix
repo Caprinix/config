@@ -41,9 +41,17 @@ in
 
     fileSystems."/persistent".neededForBoot = true;
 
-    systemd.user.tmpfiles.rules = [
-      "D /persistent/home 777 root root -"
-    ];
+    systemd.tmpfiles.settings = {
+      "10-impermanence" = {
+        "/persistent/home" = {
+          d = {
+            user = "root";
+            mode = "0775";
+            group = "users";
+          };
+        };
+      };
+    };
 
     programs.fuse.userAllowOther = true;
   };

@@ -1,6 +1,6 @@
 {
   config.home.persistence = {
-    "/persistent/home" = {
+    "/persistent/home/replicapra" = {
       directories = [
         "Documents"
         "Projects"
