@@ -5,7 +5,7 @@
 }:
 let
   inherit (lib) mkOption mkMerge types;
-  inherit (lib.caprinix) sharedNixConfig;
+  inherit (lib.caprinix) sharedNixConfig sharedNixpkgsConfig;
 
   cfg = config.nix;
 in
@@ -27,5 +27,9 @@ in
         };
       }
     ];
+    nixpkgs.config = sharedNixpkgsConfig;
+    xdg.configFile."nixpkgs/config.nix".text = lib.generators.toPretty {
+      multiline = true;
+    } sharedNixpkgsConfig;
   };
 }
