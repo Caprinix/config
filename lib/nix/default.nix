@@ -1,6 +1,5 @@
 {
   sharedNixConfig = {
-    nix = {
       checkConfig = true;
       gc = {
         dates = "daily";

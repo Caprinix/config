@@ -4,10 +4,10 @@ let
   inherit (lib.caprinix) sharedNixConfig;
 in
 {
-  config = mkMerge [
-    sharedNixConfig
-    {
-      nix = {
+  config = {
+    nix = mkMerge [
+      sharedNixConfig
+      {
         checkAllErrors = true;
         settings = {
           auto-optimise-store = true;
@@ -16,7 +16,7 @@ in
           dates = [ "daily" ];
           automatic = true;
         };
-      };
-    }
-  ];
+      }
+    ];
+  };
 }

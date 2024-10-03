@@ -18,19 +18,14 @@ in
     };
   };
 
-  config = mkMerge [
-    sharedNixConfig
-
-    {
-      nix = {
-        checkConfig = true;
+  config = {
+    nix = mkMerge [
+      sharedNixConfig
+      {
         gc = {
-          automatic = true;
           frequency = cfg.gc.dates;
-          options = "--delete-older-than 3d";
-          persistent = true;
         };
-      };
-    }
-  ];
+      }
+    ];
+  };
 }
