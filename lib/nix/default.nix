@@ -7,6 +7,9 @@
       automatic = true;
       persistent = true;
     };
+    settings = {
+      trusted-users = [ "@wheel" ];
+    };
   };
   sharedNixpkgsConfig = {
     allowUnfree = true;
