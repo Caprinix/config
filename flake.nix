@@ -20,6 +20,9 @@
     caprinix-secrets.inputs.nixpkgs.follows = "nixpkgs";
     caprinix-secrets.inputs.snowfall-lib.follows = "snowfall-lib";
 
+    caprinix-devenv.url = "github:caprinix/devenv";
+
+
     # region misc
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
@@ -56,7 +59,8 @@
       homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
 
       overlays = with inputs; [
-        nur.overlay 
+        nur.overlay
+        caprinix-devenv.overlays.default
       ];
 
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
