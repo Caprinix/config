@@ -13,15 +13,15 @@
       "locked": {
         "lastModified": 1726885501,
         "narHash": "sha256-cZifjxK0fgcku1Ix9XZaasAd6ajGpkWvyPHo7j2+whU=",
-        "ref": "refs/heads/master",
+        "owner": "caprinix",
+        "repo": "secrets",
         "rev": "40643fbc56c39131555c630d8b34430cac9edce9",
-        "revCount": 6,
-        "type": "git",
-        "url": "ssh://git@github.com/caprinix/secrets.git"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/caprinix/secrets.git"
+        "owner": "caprinix",
+        "repo": "secrets",
+        "type": "github"
       }
     },
     "disko": {

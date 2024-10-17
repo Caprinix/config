@@ -16,7 +16,7 @@
     nur.url = "github:nix-community/nur";
 
     # region caprinix 
-    caprinix-secrets.url = "git+ssh://git@github.com/caprinix/secrets.git";
+    caprinix-secrets.url = "github:caprinix/secrets";
     caprinix-secrets.inputs.nixpkgs.follows = "nixpkgs";
     caprinix-secrets.inputs.snowfall-lib.follows = "snowfall-lib";
 
@@ -56,7 +56,7 @@
       homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
 
       overlays = with inputs; [
-        nur.overlay
+        nur.overlay 
       ];
 
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
