@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -18,6 +19,11 @@ in
     virtualisation.docker = enabled // {
       autoPrune = config.caprinix.virtualisation.autoPrune;
     };
+
+    environment.systemPackages = with pkgs; [
+        dive
+        lazydocker
+    ];
 
     users.users = {
       replicapra = {
