@@ -112,6 +112,29 @@
         "type": "github"
       }
     },
+    "caprinix-settings": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "snowfall-lib": [
+          "snowfall-lib"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729716112,
+        "narHash": "sha256-ecyCT1FC6r+HWgN6OTn/BNLeY6uZwlOl6nALCIZZOTM=",
+        "owner": "caprinix",
+        "repo": "settings",
+        "rev": "65f1c2cf2795ec75ef6ff038e8ab8e12a51ee5d1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "caprinix",
+        "repo": "settings",
+        "type": "github"
+      }
+    },
     "devenv": {
       "inputs": {
         "cachix": "cachix_2",
@@ -705,11 +728,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1729711696,
-        "narHash": "sha256-7AtTT1fCuQTsNZMb0BZ3DcxJelE8wUUrNB9WTHYYdSI=",
+        "lastModified": 1729715653,
+        "narHash": "sha256-sBOuKfNNlxfy8XIoeyFrvQ26hgbjjdGnZg+oD7RthNw=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "1b09d9f4921f2e54010399128dbc414777bd1b80",
+        "rev": "29fe693269ed68b55408182267b3722d2b7adb3b",
         "type": "github"
       },
       "original": {
@@ -812,6 +835,7 @@
       "inputs": {
         "caprinix-devenv": "caprinix-devenv",
         "caprinix-secrets": "caprinix-secrets",
+        "caprinix-settings": "caprinix-settings",
         "disko": "disko",
         "home-manager": "home-manager",
         "impermanence": "impermanence",

@@ -20,10 +20,13 @@
     caprinix-secrets.inputs.nixpkgs.follows = "nixpkgs";
     caprinix-secrets.inputs.snowfall-lib.follows = "snowfall-lib";
 
+    caprinix-settings.url = "github:caprinix/settings";
+    caprinix-settings.inputs.nixpkgs.follows = "nixpkgs";
+    caprinix-settings.inputs.snowfall-lib.follows = "snowfall-lib";
+
     caprinix-devenv.url = "github:caprinix/devenv";
 
-
-    # region misc
+    # region misc 
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
   };
