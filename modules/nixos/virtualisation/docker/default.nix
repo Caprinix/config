@@ -21,8 +21,8 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-        dive
-        lazydocker
+      dive
+      lazydocker
     ];
 
     users.users = {
