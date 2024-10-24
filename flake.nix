@@ -15,12 +15,20 @@
 
     nur.url = "github:nix-community/nur";
 
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
     # region caprinix 
-    caprinix-secrets.url = "git+ssh://git@github.com/caprinix/secrets.git";
+    caprinix-secrets.url = "github:caprinix/secrets";
     caprinix-secrets.inputs.nixpkgs.follows = "nixpkgs";
     caprinix-secrets.inputs.snowfall-lib.follows = "snowfall-lib";
 
-    # region misc
+    caprinix-settings.url = "github:caprinix/settings";
+    caprinix-settings.inputs.nixpkgs.follows = "nixpkgs";
+    caprinix-settings.inputs.snowfall-lib.follows = "snowfall-lib";
+
+    caprinix-devenv.url = "github:caprinix/devenv";
+
+    # region misc 
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -44,9 +52,7 @@
       };
     in
     lib.mkFlake {
-      channels-config = {
-        allowUnfree = true;
-      };
+      channels-config = lib.sharedNixpkgsConfig;
 
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
@@ -59,6 +65,8 @@
 
       overlays = with inputs; [
         nur.overlay
+        caprinix-devenv.overlays.default
+        nix-vscode-extensions.overlays.default
       ];
 
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };

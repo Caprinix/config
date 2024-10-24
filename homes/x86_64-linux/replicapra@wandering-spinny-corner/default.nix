@@ -19,6 +19,7 @@ in
         tmux = enabled;
         zsh = enabled;
       };
+      workbench = enabled;
     };
   };
 }

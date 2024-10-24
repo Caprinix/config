@@ -5,7 +5,7 @@
 }:
 let
   inherit (lib) mkOption mkMerge types;
-  inherit (lib.caprinix) sharedNixConfig;
+  inherit (lib.caprinix) sharedNixConfig sharedNixpkgsConfig;
 
   cfg = config.nix;
 in
@@ -18,19 +18,18 @@ in
     };
   };
 
-  config = mkMerge [
-    sharedNixConfig
-
-    {
-      nix = {
-        checkConfig = true;
+  config = {
+    nix = mkMerge [
+      sharedNixConfig
+      {
         gc = {
-          automatic = true;
           frequency = cfg.gc.dates;
-          options = "--delete-older-than 3d";
-          persistent = true;
         };
-      };
-    }
-  ];
+      }
+    ];
+    nixpkgs.config = sharedNixpkgsConfig;
+    xdg.configFile."nixpkgs/config.nix".text = lib.generators.toPretty {
+      multiline = true;
+    } sharedNixpkgsConfig;
+  };
 }

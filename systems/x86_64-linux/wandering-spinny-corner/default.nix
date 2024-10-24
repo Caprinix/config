@@ -25,6 +25,14 @@ in
       services = {
         openssh = enabled;
       };
+      virtualisation = enabled // {
+        autoPrune = enabled // {
+          dates = "daily";
+        };
+        podman = enabled;
+        docker = enabled;
+        qemu = enabled;
+      };
     };
 
     users.users.replicapra = {
@@ -32,5 +40,6 @@ in
         attrValues (getAttrs [ "wandering-woof-scorebook" ] systems)
       );
     };
+
   };
 }

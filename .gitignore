@@ -1,1 +1,11 @@
-systems/x86_64-linux/wandering-spinny-corner/hardware-configuration.nix
+**/hardware-configuration.nix
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
