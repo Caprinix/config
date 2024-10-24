@@ -8,6 +8,8 @@ let
   inherit (lib.caprinix) mkIfEnabled enabled;
 
   cfg = config.caprinix.programs.git;
+
+  ignores = import ./ignores.nix;
 in
 {
   options.caprinix.programs.git = {
@@ -17,6 +19,7 @@ in
   config = mkIfEnabled cfg {
     programs = {
       git = enabled // {
+        inherit ignores;
         userEmail = "replicapra@outlook.com";
         userName = "replicapra";
         extraConfig = {
@@ -27,7 +30,6 @@ in
           commit.gpgSign = true;
           tag.gpgSign = true;
         };
-        ignores = [ ];
       };
       lazygit = enabled;
       gh = enabled // {
