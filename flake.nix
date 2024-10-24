@@ -15,6 +15,8 @@
 
     nur.url = "github:nix-community/nur";
 
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
     # region caprinix 
     caprinix-secrets.url = "github:caprinix/secrets";
     caprinix-secrets.inputs.nixpkgs.follows = "nixpkgs";
@@ -64,6 +66,7 @@
       overlays = with inputs; [
         nur.overlay
         caprinix-devenv.overlays.default
+        nix-vscode-extensions.overlays.default
       ];
 
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
