@@ -4,7 +4,12 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkAfter;
+  inherit (lib)
+    mkEnableOption
+    mkAfter
+    mkOption
+    types
+    ;
   inherit (lib.caprinix) mkIfEnabled;
 
   cfg = config.caprinix.impermanence;
@@ -14,6 +19,11 @@ in
 
   options.caprinix.impermanence = {
     enable = mkEnableOption "impermanence";
+    retentionDuration = mkOption {
+      default = 7;
+      description = "Number of days to keep old btrfs_tmp files";
+      type = types.int;
+    };
   };
 
   config = mkIfEnabled cfg {
@@ -32,7 +42,7 @@ in
           done
           btrfs subvolume delete "$1"
       }
-      for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
+      for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +${toString cfg.retentionDuration}); do
           delete_subvolume_recursively "$i"
       done
       btrfs subvolume create /btrfs_tmp/root
