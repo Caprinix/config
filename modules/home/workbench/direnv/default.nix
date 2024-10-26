@@ -25,6 +25,7 @@ in
           whitelist = {
             prefix = [
               "/home/replicapra/Projects/replicapra"
+              "/home/replicapra/Projects/caprinix"
             ];
           };
         };
