@@ -11,5 +11,8 @@
   languages.nix.lsp.package = pkgs.nixd;
 
   editors.vscode.enable = true;
-  editors.vscode.mixins = [ "nix" ];
+  editors.vscode.mixins = [
+    "nix"
+    "git"
+  ];
 }
