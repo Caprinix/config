@@ -21,6 +21,7 @@ in
       impermanence = enabled;
       programs = {
         zsh = enabled;
+        steam = enabled;
       };
       services = {
         openssh = enabled;
