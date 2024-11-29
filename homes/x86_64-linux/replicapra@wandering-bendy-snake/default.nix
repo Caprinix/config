@@ -6,7 +6,7 @@ let
   inherit (lib.caprinix) enabled disabled;
 in
 {
-  imports = [./overrides.nix];
+  imports = [ ./overrides.nix ];
 
   config = {
     caprinix = {

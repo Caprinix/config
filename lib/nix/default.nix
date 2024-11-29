@@ -8,7 +8,10 @@
       persistent = true;
     };
     settings = {
-      trusted-users = [ "@wheel" "@sudo" ];
+      trusted-users = [
+        "@wheel"
+        "@sudo"
+      ];
     };
   };
   sharedNixpkgsConfig = {
