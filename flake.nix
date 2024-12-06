@@ -63,11 +63,20 @@
 
       homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
 
-      homes.users."replicapra@wandering-bendy-snake".specialArgs = {
-        osConfig = {
-          system.stateVersion = "24.05";
-          virtualisation.podman.enable = true;
-          virtualisation.docker.enable = true;
+      homes.users = {
+        "replicapra@wandering-bendy-snake".specialArgs = {
+          osConfig = {
+            system.stateVersion = "24.05";
+            virtualisation.podman.enable = true;
+            virtualisation.docker.enable = true;
+          };
+        };
+        "replicapra@wandering-cunning-dragon".specialArgs = {
+          osConfig = {
+            system.stateVersion = "24.05";
+            virtualisation.podman.enable = false;
+            virtualisation.docker.enable = true;
+          };
         };
       };
 
