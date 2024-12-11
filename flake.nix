@@ -14,6 +14,8 @@
     impermanence.url = "github:nix-community/impermanence";
 
     nur.url = "github:nix-community/nur";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
+    nur.inputs.treefmt-nix.follows = "treefmt-nix";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
@@ -31,6 +33,9 @@
     # region misc 
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
+
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
