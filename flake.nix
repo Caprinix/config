@@ -91,6 +91,10 @@
         nix-vscode-extensions.overlays.default
       ];
 
-      outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
+      outputs-builder = channels: let
+        treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;
+      in {
+        formatter = treefmtEval.config.build.wrapper;
+      };
     };
 }
