@@ -1,12 +1,7 @@
-{
-  lib,
-  ...
-}:
-let
+{lib, ...}: let
   inherit (lib.caprinix) enabled disabled;
-in
-{
-  imports = [ ./overrides.nix ];
+in {
+  imports = [./overrides.nix];
 
   config = {
     caprinix = {
@@ -18,9 +13,11 @@ in
         tmux = enabled;
         zsh = enabled;
       };
-      workbench = enabled // {
-        vscode = disabled;
-      };
+      workbench =
+        enabled
+        // {
+          vscode = disabled;
+        };
     };
     programs.home-manager = enabled;
   };

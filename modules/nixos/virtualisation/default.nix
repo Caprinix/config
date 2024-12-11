@@ -1,12 +1,14 @@
-{ lib, config, ... }:
-let
-  inherit (lib) mkEnableOption mkAfter mkOption;
+{
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkOption;
   inherit (lib.types) bool listOf str;
   inherit (lib.caprinix) mkIfEnabled enabled;
 
   cfg = config.caprinix.virtualisation;
-in
-{
+in {
   options.caprinix.virtualisation = {
     enable = mkEnableOption "virtualisation";
 
@@ -23,8 +25,8 @@ in
 
       flags = mkOption {
         type = listOf str;
-        default = [ ];
-        example = [ "--all" ];
+        default = [];
+        example = ["--all"];
         description = ''
           Any additional flags passed to {command}`docker system prune` and {command}`podman system prune`.
         '';

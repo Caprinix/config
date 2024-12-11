@@ -2,26 +2,26 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   inherit (lib) mkEnableOption;
   inherit (lib.caprinix) mkIfEnabled enabled;
 
   cfg = config.caprinix.programs.neovim;
-in
-{
+in {
   options.caprinix.programs.neovim = {
     enable = mkEnableOption "nvim";
   };
 
   config = mkIfEnabled cfg {
     programs = {
-      neovim = enabled // {
-        defaultEditor = true;
-        viAlias = true;
-        vimAlias = true;
-        vimdiffAlias = true;
-      };
+      neovim =
+        enabled
+        // {
+          defaultEditor = true;
+          viAlias = true;
+          vimAlias = true;
+          vimdiffAlias = true;
+        };
     };
   };
 }

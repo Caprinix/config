@@ -4,18 +4,18 @@
   pkgs,
   osConfig,
   ...
-}:
-let
+}: let
   inherit (lib) mkEnableOption;
   inherit (lib.caprinix) mkIfEnabled;
 
   cfg = config.caprinix.workbench.distrobox;
-in
-{
+in {
   options.caprinix.workbench.distrobox = {
-    enable = mkEnableOption "distrobox" // {
-      default = config.caprinix.workbench.enable;
-    };
+    enable =
+      mkEnableOption "distrobox"
+      // {
+        default = config.caprinix.workbench.enable;
+      };
   };
 
   config = mkIfEnabled cfg {

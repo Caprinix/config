@@ -1,8 +1,6 @@
-{ lib, ... }:
-let
+{lib, ...}: let
   inherit (lib) mkIf;
-in
-{
+in {
   enabled = {
     enable = true;
   };
@@ -11,5 +9,5 @@ in
     enable = false;
   };
 
-  mkIfEnabled = option: content: mkIf (option.enable) content;
+  mkIfEnabled = option: content: mkIf option.enable content;
 }

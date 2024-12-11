@@ -6,7 +6,7 @@
         "/var/lib/bluetooth"
         "/etc/NetworkManager/system-connections"
       ];
-      files = [ ];
+      files = [];
     };
   };
 }

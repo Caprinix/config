@@ -2,19 +2,17 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   inherit (lib) mkOption mkMerge types;
   inherit (lib.caprinix) sharedNixConfig sharedNixpkgsConfig;
 
   cfg = config.nix;
-in
-{
+in {
   options.nix = {
     gc = {
       # small workaround as it's called gc.dates
-      # in nixos but gc.frequency in home-manger 
-      dates = mkOption { type = types.str; };
+      # in nixos but gc.frequency in home-manger
+      dates = mkOption {type = types.str;};
     };
   };
 
@@ -28,8 +26,10 @@ in
       }
     ];
     nixpkgs.config = sharedNixpkgsConfig;
-    xdg.configFile."nixpkgs/config.nix".text = lib.generators.toPretty {
-      multiline = true;
-    } sharedNixpkgsConfig;
+    xdg.configFile."nixpkgs/config.nix".text =
+      lib.generators.toPretty {
+        multiline = true;
+      }
+      sharedNixpkgsConfig;
   };
 }

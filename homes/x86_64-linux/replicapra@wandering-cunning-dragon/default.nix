@@ -1,11 +1,6 @@
-{
-  lib,
-  ...
-}:
-let
-  inherit (lib.caprinix) enabled disabled;
-in
-{
+{lib, ...}: let
+  inherit (lib.caprinix) enabled;
+in {
   config = {
     caprinix = {
       programs = {

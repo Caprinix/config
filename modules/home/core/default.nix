@@ -1,8 +1,4 @@
-{
-  osConfig,
-  ...
-}:
-{
+{osConfig, ...}: {
   imports = [
     ./nix.nix
     ./packages.nix

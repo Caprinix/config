@@ -3,14 +3,12 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   inherit (lib) mkEnableOption;
   inherit (lib.caprinix) mkIfEnabled;
 
   cfg = config.caprinix.workbench;
-in
-{
+in {
   options.caprinix.workbench = {
     enable = mkEnableOption "workbench";
   };

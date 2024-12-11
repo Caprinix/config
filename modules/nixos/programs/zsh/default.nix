@@ -3,14 +3,12 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   inherit (lib) mkEnableOption;
   inherit (lib.caprinix) mkIfEnabled enabled;
 
   cfg = config.caprinix.programs.zsh;
-in
-{
+in {
   options.caprinix.programs.zsh = {
     enable = mkEnableOption "zsh";
   };

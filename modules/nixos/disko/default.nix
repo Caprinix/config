@@ -2,14 +2,12 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   inherit (lib) mkEnableOption mkOption types;
   inherit (lib.caprinix) mkIfEnabled;
 
   cfg = config.caprinix.disko;
-in
-{
+in {
   options.caprinix.disko = {
     enable = mkEnableOption "disko";
     layout = mkOption {
@@ -18,9 +16,9 @@ in
     };
     args = mkOption {
       type = types.attrs;
-      default = { };
+      default = {};
     };
   };
 
-  config = mkIfEnabled cfg { inherit (import ./layouts/${cfg.layout}.nix cfg.args) disko; };
+  config = mkIfEnabled cfg {inherit (import ./layouts/${cfg.layout}.nix cfg.args) disko;};
 }

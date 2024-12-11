@@ -2,22 +2,22 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   inherit (lib) mkEnableOption;
   inherit (lib.caprinix) mkIfEnabled enabled;
 
   cfg = config.caprinix.virtualisation.podman;
-in
-{
+in {
   options.caprinix.virtualisation.podman = {
     enable = mkEnableOption "podman";
   };
 
   config = mkIfEnabled cfg {
-    virtualisation.podman = enabled // {
-      autoPrune = config.caprinix.virtualisation.autoPrune;
-    };
+    virtualisation.podman =
+      enabled
+      // {
+        inherit (config.caprinix.virtualisation) autoPrune;
+      };
 
     users.users = {
       replicapra = {

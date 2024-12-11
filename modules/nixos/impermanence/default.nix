@@ -2,9 +2,9 @@
   lib,
   config,
   ...
-}:
-let
-  inherit (lib)
+}: let
+  inherit
+    (lib)
     mkEnableOption
     mkAfter
     mkOption
@@ -13,9 +13,8 @@ let
   inherit (lib.caprinix) mkIfEnabled;
 
   cfg = config.caprinix.impermanence;
-in
-{
-  imports = [ ./persistence.nix ];
+in {
+  imports = [./persistence.nix];
 
   options.caprinix.impermanence = {
     enable = mkEnableOption "impermanence";

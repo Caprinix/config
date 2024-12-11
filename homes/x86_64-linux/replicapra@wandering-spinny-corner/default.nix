@@ -1,12 +1,7 @@
-{
-  lib,
-  ...
-}:
-let
+{lib, ...}: let
   inherit (lib.caprinix) enabled;
-in
-{
-  imports = [ ./persistence.nix ];
+in {
+  imports = [./persistence.nix];
 
   config = {
     caprinix = {

@@ -1,7 +1,4 @@
-{
-  firefox-addons,
-}:
-{
+{firefox-addons}: {
   id = 0;
   isDefault = true;
   extensions = with firefox-addons; [
@@ -34,7 +31,7 @@
         ];
         iconUpdateURL = "https://search.nixos.org/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
-        definedAliases = [ "@nxp" ];
+        definedAliases = ["@nxp"];
       };
       "NixOs Options" = {
         urls = [
@@ -58,7 +55,7 @@
         ];
         iconUpdateURL = "https://search.nixos.org/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
-        definedAliases = [ "@nxo" ];
+        definedAliases = ["@nxo"];
       };
     };
   };

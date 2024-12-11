@@ -19,7 +19,7 @@
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
-    # region caprinix 
+    # region caprinix
     caprinix-secrets.url = "github:caprinix/secrets";
     caprinix-secrets.inputs.nixpkgs.follows = "nixpkgs";
     caprinix-secrets.inputs.snowfall-lib.follows = "snowfall-lib";
@@ -30,7 +30,7 @@
 
     caprinix-devenv.url = "github:caprinix/devenv";
 
-    # region misc 
+    # region misc
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -38,24 +38,22 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =
-    inputs:
-    let
-      lib = inputs.snowfall-lib.mkLib {
-        inherit inputs;
+  outputs = inputs: let
+    lib = inputs.snowfall-lib.mkLib {
+      inherit inputs;
 
-        src = ./.;
+      src = ./.;
 
-        snowfall = rec {
-          namespace = "caprinix";
+      snowfall = rec {
+        namespace = "caprinix";
 
-          meta = {
-            name = namespace;
-            title = namespace;
-          };
+        meta = {
+          name = namespace;
+          title = namespace;
         };
       };
-    in
+    };
+  in
     lib.mkFlake {
       channels-config = lib.sharedNixpkgsConfig;
 
@@ -66,7 +64,7 @@
         caprinix-secrets.nixosModules.secrets
       ];
 
-      homes.modules = with inputs; [ impermanence.nixosModules.home-manager.impermanence ];
+      homes.modules = with inputs; [impermanence.nixosModules.home-manager.impermanence];
 
       homes.users = {
         "replicapra@wandering-bendy-snake".specialArgs = {

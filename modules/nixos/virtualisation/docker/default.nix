@@ -3,22 +3,22 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   inherit (lib) mkEnableOption;
   inherit (lib.caprinix) mkIfEnabled enabled;
 
   cfg = config.caprinix.virtualisation.docker;
-in
-{
+in {
   options.caprinix.virtualisation.docker = {
     enable = mkEnableOption "docker";
   };
 
   config = mkIfEnabled cfg {
-    virtualisation.docker = enabled // {
-      autoPrune = config.caprinix.virtualisation.autoPrune;
-    };
+    virtualisation.docker =
+      enabled
+      // {
+        inherit (config.caprinix.virtualisation) autoPrune;
+      };
 
     environment.systemPackages = with pkgs; [
       dive

@@ -1,9 +1,7 @@
-{ lib, ... }:
-let
+{lib, ...}: let
   inherit (lib) mkMerge;
   inherit (lib.caprinix) sharedNixConfig sharedNixpkgsConfig;
-in
-{
+in {
   config = {
     nix = mkMerge [
       sharedNixConfig
@@ -13,7 +11,7 @@ in
           auto-optimise-store = true;
         };
         optimise = {
-          dates = [ "daily" ];
+          dates = ["daily"];
           automatic = true;
         };
       }

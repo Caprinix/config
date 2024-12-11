@@ -9,7 +9,7 @@
         ".mozilla/firefox"
         ".distrobox"
       ];
-      files = [ ];
+      files = [];
       allowOther = true;
     };
   };

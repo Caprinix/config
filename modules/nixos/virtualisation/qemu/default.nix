@@ -3,14 +3,12 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   inherit (lib) mkEnableOption;
   inherit (lib.caprinix) mkIfEnabled;
 
   cfg = config.caprinix.virtualisation.qemu;
-in
-{
+in {
   options.caprinix.virtualisation.qemu = {
     enable = mkEnableOption "qemu";
   };
