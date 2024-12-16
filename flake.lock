@@ -99,11 +99,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1726885501,
-        "narHash": "sha256-cZifjxK0fgcku1Ix9XZaasAd6ajGpkWvyPHo7j2+whU=",
+        "lastModified": 1734355834,
+        "narHash": "sha256-Ost3KMs2FWCtCwXA2UV6sJT5B17iEsYtqWENkN3BO4s=",
         "owner": "caprinix",
         "repo": "secrets",
-        "rev": "40643fbc56c39131555c630d8b34430cac9edce9",
+        "rev": "01c39e254a0674aa6eb8da055ed3e8c0efc3c53f",
         "type": "github"
       },
       "original": {
