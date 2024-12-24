@@ -84,7 +84,7 @@
       };
 
       overlays = with inputs; [
-        nur.overlay
+        nur.overlays.default
         caprinix-devenv.overlays.default
         nix-vscode-extensions.overlays.default
       ];
