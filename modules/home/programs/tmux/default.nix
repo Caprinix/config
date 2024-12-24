@@ -4,10 +4,12 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption;
+  inherit (lib) mkEnableOption mkOption types;
   inherit (lib.caprinix) mkIfEnabled enabled;
 
   cfg = config.caprinix.programs.tmux;
+
+  extraConfig = builtins.readFile ./tmux-extra.conf;
 in {
   options.caprinix.programs.tmux = {
     enable = mkEnableOption "tmux";
@@ -17,12 +19,15 @@ in {
       tmux =
         enabled
         // {
+          inherit extraConfig;
+          aggressiveResize = true;
           baseIndex = 1;
           clock24 = true;
-          mouse = true;
+          focusEvents = true;
+          historyLimit = 10000;
           keyMode = "vi";
+          mouse = true;
           prefix = "C-t";
-          shell = mkIfEnabled config.caprinix.programs.zsh "${pkgs.zsh}/bin/zsh";
           terminal = "screen-256color";
           tmuxinator = enabled;
           tmuxp = enabled;
