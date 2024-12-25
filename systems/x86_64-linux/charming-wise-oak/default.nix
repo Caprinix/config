@@ -1,6 +1,5 @@
 {lib, ...}: let
-  inherit (lib) catAttrs attrValues getAttrs;
-  inherit (lib.caprinix) enabled systems;
+  inherit (lib.caprinix) enabled;
 in {
   imports = [
     ./configuration.nix
@@ -19,14 +18,14 @@ in {
         };
       impermanence = enabled;
       services = {
-        openssh = enabled;
+        openssh =
+          enabled
+          // {
+            authorizedSystems = [
+              "wandering-woof-scorebook"
+            ];
+          };
       };
-    };
-
-    users.users.replicapra = {
-      openssh.authorizedKeys.keys = catAttrs "sshPublicKey" (
-        attrValues (getAttrs ["wandering-woof-scorebook" "wandering-bendy-snake"] systems)
-      );
     };
   };
 }

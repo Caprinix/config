@@ -3,16 +3,20 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
-  inherit (lib.caprinix) enabled;
+  inherit (lib) mkEnableOption mkOption catAttrs attrValues getAttrs types;
+  inherit (lib.caprinix) enabled systems mkIfEnabled;
 
   cfg = config.caprinix.services.openssh;
 in {
   options.caprinix.services.openssh = {
     enable = mkEnableOption "openssh";
+    authorizedSystems = mkOption {
+      type = types.listOf types.str;
+      default = [];
+    };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIfEnabled cfg {
     services = {
       openssh =
         enabled
@@ -20,7 +24,7 @@ in {
           settings = {
             X11Forwarding = false;
             UseDns = true;
-            PermitRootLogin = "no";
+            PermitRootLogin = "prohibit-password";
             PasswordAuthentication = false;
           };
           extraConfig = ''
@@ -45,5 +49,11 @@ in {
             };
         };
     };
+    users.users.replicapra.openssh.authorizedKeys.keys = catAttrs "sshPublicKey" (
+      attrValues (getAttrs cfg.authorizedSystems systems)
+    );
+    users.users.root.openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFHzMnGcLpIyjvzi/YkMqUdFGhyE92e4t9aSgNmOvY57 master@replicapra"
+    ];
   };
 }
