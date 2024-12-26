@@ -1,7 +1,6 @@
 {lib, ...}: let
   inherit (lib.caprinix) enabled;
 in {
-
   config = {
     caprinix = {
       programs = {

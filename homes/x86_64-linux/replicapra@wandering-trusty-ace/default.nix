@@ -15,6 +15,7 @@ in {
         zsh = enabled;
       };
       workbench = enabled;
+      persistence = enabled;
     };
   };
 }

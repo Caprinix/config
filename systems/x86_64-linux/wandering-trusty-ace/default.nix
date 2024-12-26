@@ -18,6 +18,7 @@ in {
           };
         };
       impermanence = enabled;
+      persistence = enabled;
       programs = {
         zsh = enabled;
         steam = enabled;

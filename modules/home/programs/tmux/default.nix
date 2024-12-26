@@ -1,10 +1,9 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption types;
+  inherit (lib) mkEnableOption;
   inherit (lib.caprinix) mkIfEnabled enabled;
 
   cfg = config.caprinix.programs.tmux;
