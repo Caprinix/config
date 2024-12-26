@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}: let
+{lib, ...}: let
   inherit (lib.attrsets) listToAttrs;
   inherit (lib.snowfall.fs) get-nix-files-recursive;
   inherit (lib.snowfall.path) get-parent-directory;
