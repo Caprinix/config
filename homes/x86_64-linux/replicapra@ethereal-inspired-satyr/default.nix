@@ -1,8 +1,6 @@
 {lib, ...}: let
   inherit (lib.caprinix) enabled disabled;
 in {
-  imports = [./overrides.nix];
-
   config = {
     caprinix = {
       programs = {

@@ -64,7 +64,10 @@
         caprinix-secrets.nixosModules.secrets
       ];
 
-      homes.modules = with inputs; [impermanence.nixosModules.home-manager.impermanence];
+      homes.modules = with inputs; [
+        impermanence.nixosModules.home-manager.impermanence
+        caprinix-secrets.homeModules.secrets
+      ];
 
       homes.users = lib.loadSpecialArgs ./homes;
 
