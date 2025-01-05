@@ -14,8 +14,6 @@
 
   cfg = config.caprinix.impermanence;
 in {
-  imports = [./persistence.nix];
-
   options.caprinix.impermanence = {
     enable = mkEnableOption "impermanence";
     retentionDuration = mkOption {

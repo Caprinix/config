@@ -1,6 +1,6 @@
-{
-  checkImportCondition = systemConfig: _homeConfig: systemConfig.caprinix.services.kavita.enable;
+{systemConfig, ...}: {
+  inherit (systemConfig.caprinix.services.kavita) enable;
   directories = [
-    "/var/lib/kavita"
+    systemConfig.services.kavita.dataDir
   ];
 }

@@ -13,8 +13,13 @@
 
   flakeRoot = inputs.self.outPath;
   homePersistenceFiles = builtins.filter (name: builtins.baseNameOf name == "home-persistence.nix") (get-nix-files-recursive flakeRoot);
-  allHomePersistenceImports = builtins.map import homePersistenceFiles;
-  homePersistenceImports = builtins.filter (import: (import.checkImportCondition osConfig config)) allHomePersistenceImports;
+  allHomePersistenceImports = builtins.map (file:
+    import file {
+      systemConfig = osConfig;
+      homeConfig = config;
+    })
+  homePersistenceFiles;
+  homePersistenceImports = builtins.filter (persistence: persistence.enable) allHomePersistenceImports;
 in {
   options.caprinix.persistence = {
     enable = mkEnableOption "persistence";
