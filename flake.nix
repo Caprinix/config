@@ -36,6 +36,9 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: let
@@ -57,8 +60,17 @@
     lib.mkFlake {
       channels-config = lib.sharedNixpkgsConfig;
 
+      overlays = with inputs; [
+        nur.overlays.default
+        caprinix-devenv.overlays.default
+        nix-vscode-extensions.overlays.default
+      ];
+
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
+        {
+          home-manager.backupFileExtension = "home-manager-backup";
+        }
         disko.nixosModules.disko
         impermanence.nixosModules.impermanence
         caprinix-secrets.nixosModules.secrets
@@ -71,11 +83,7 @@
 
       homes.users = lib.loadSpecialArgs ./homes;
 
-      overlays = with inputs; [
-        nur.overlays.default
-        caprinix-devenv.overlays.default
-        nix-vscode-extensions.overlays.default
-      ];
+      deploy = {};
 
       outputs-builder = channels: let
         treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;
