@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib.caprinix) enabled;
+  inherit (lib.caprinix) enabled systems;
 in {
   imports = [
     ./configuration.nix
@@ -21,8 +21,9 @@ in {
         openssh =
           enabled
           // {
-            authorizedSystems = [
-              "wandering-woof-scorebook"
+            authorizedKeys = [
+              systems.wandering-woof-scorebook.sshPublicKey
+              systems.ethereal-inspired-satyr.sshPublicKey
             ];
           };
       };
