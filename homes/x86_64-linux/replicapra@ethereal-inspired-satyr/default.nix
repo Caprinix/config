@@ -6,6 +6,7 @@ in {
       programs = {
         atuin = enabled;
         git = enabled;
+        htop = enabled;
         neovim = enabled;
         starship = enabled;
         tmux = enabled;
