@@ -23,6 +23,7 @@
     caprinix-secrets.url = "github:caprinix/secrets";
     caprinix-secrets.inputs.nixpkgs.follows = "nixpkgs";
     caprinix-secrets.inputs.snowfall-lib.follows = "snowfall-lib";
+    caprinix-secrets.inputs.treefmt-nix.follows = "treefmt-nix";
 
     caprinix-settings.url = "github:caprinix/settings";
     caprinix-settings.inputs.nixpkgs.follows = "nixpkgs";
@@ -83,7 +84,9 @@
 
       homes.users = lib.loadSpecialArgs ./homes;
 
-      deploy = {};
+      deploy = {
+        nodes = {};
+      };
 
       outputs-builder = channels: let
         treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;

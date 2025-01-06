@@ -96,14 +96,17 @@
         "snowfall-lib": [
           "snowfall-lib"
         ],
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
       },
       "locked": {
-        "lastModified": 1735740588,
-        "narHash": "sha256-4gHXowR9Xz7q4e/g0//wZ2rFIRRe8pvTOpnN7o2QBm0=",
+        "lastModified": 1736179156,
+        "narHash": "sha256-UsD1f3NpTuPtYEaOqbL6tHggPqAqx275hZ798IZVWnY=",
         "owner": "caprinix",
         "repo": "secrets",
-        "rev": "0a46ee4d9aa3267b6a646a76e4432cc196969773",
+        "rev": "d97f8b43e2576acde7c1cb1c93e1d3533dc65be0",
         "type": "github"
       },
       "original": {
