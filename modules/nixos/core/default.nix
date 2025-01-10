@@ -1,10 +1,7 @@
-{lib, ...}: {
+_: {
   imports = [
     ./nix.nix
     ./users.nix
+    ./boot.nix
   ];
-
-  config = {
-    boot.tmp.cleanOnBoot = true;
-  };
 }
