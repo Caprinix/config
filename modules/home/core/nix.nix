@@ -26,7 +26,7 @@ in {
       }
       (lib.optionalAttrs (config.sops.secrets ? "nix/secret-config") {
         extraOptions = ''
-        !include ${config.sops.secrets."nix/secret-config".path}
+          !include ${config.sops.secrets."nix/secret-config".path}
         '';
       })
     ];

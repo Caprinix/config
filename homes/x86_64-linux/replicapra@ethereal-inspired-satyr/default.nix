@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib.caprinix) enabled disabled;
 in {
   config = {
@@ -18,6 +22,7 @@ in {
           vscode = disabled;
         };
     };
+
     programs.home-manager = enabled;
   };
 }

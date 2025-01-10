@@ -3,8 +3,8 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption catAttrs attrValues getAttrs types;
-  inherit (lib.caprinix) enabled systems mkIfEnabled;
+  inherit (lib) mkEnableOption mkOption types;
+  inherit (lib.caprinix) enabled mkIfEnabled;
 
   cfg = config.caprinix.services.openssh;
 in {
