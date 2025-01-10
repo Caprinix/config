@@ -25,12 +25,6 @@
     caprinix-secrets.inputs.snowfall-lib.follows = "snowfall-lib";
     caprinix-secrets.inputs.treefmt-nix.follows = "treefmt-nix";
 
-    caprinix-settings.url = "github:caprinix/settings";
-    caprinix-settings.inputs.nixpkgs.follows = "nixpkgs";
-    caprinix-settings.inputs.snowfall-lib.follows = "snowfall-lib";
-
-    caprinix-devenv.url = "github:caprinix/devenv";
-
     # region misc
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
@@ -63,7 +57,6 @@
 
       overlays = with inputs; [
         nur.overlays.default
-        caprinix-devenv.overlays.default
         nix-vscode-extensions.overlays.default
       ];
 
