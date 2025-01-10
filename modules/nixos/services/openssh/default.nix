@@ -3,14 +3,14 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption catAttrs attrValues getAttrs types;
-  inherit (lib.caprinix) enabled systems mkIfEnabled;
+  inherit (lib) mkEnableOption mkOption types;
+  inherit (lib.caprinix) enabled mkIfEnabled;
 
   cfg = config.caprinix.services.openssh;
 in {
   options.caprinix.services.openssh = {
     enable = mkEnableOption "openssh";
-    authorizedSystems = mkOption {
+    authorizedKeys = mkOption {
       type = types.listOf types.str;
       default = [];
     };
@@ -49,9 +49,7 @@ in {
             };
         };
     };
-    users.users.replicapra.openssh.authorizedKeys.keys = catAttrs "sshPublicKey" (
-      attrValues (getAttrs cfg.authorizedSystems systems)
-    );
+    users.users.replicapra.openssh.authorizedKeys.keys = cfg.authorizedKeys;
     users.users.root.openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFHzMnGcLpIyjvzi/YkMqUdFGhyE92e4t9aSgNmOvY57 master@replicapra"
     ];

@@ -13,8 +13,13 @@
   flakeRoot = inputs.self.outPath;
   homeConfig = config.snowfallorg.users.replicapra.home.config;
   systemPersistenceFiles = builtins.filter (name: builtins.baseNameOf name == "system-persistence.nix") (get-nix-files-recursive flakeRoot);
-  allSystemPersistenceImports = builtins.map import systemPersistenceFiles;
-  systemPersistenceImports = builtins.filter (import: (import.checkImportCondition config homeConfig)) allSystemPersistenceImports;
+  allSystemPersistenceImports = builtins.map (file:
+    import file {
+      systemConfig = config;
+      inherit homeConfig;
+    })
+  systemPersistenceFiles;
+  systemPersistenceImports = builtins.filter (persistence: persistence.enable) allSystemPersistenceImports;
 in {
   options.caprinix.persistence = {
     enable = mkEnableOption "persistence";

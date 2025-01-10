@@ -23,12 +23,7 @@
     caprinix-secrets.url = "github:caprinix/secrets";
     caprinix-secrets.inputs.nixpkgs.follows = "nixpkgs";
     caprinix-secrets.inputs.snowfall-lib.follows = "snowfall-lib";
-
-    caprinix-settings.url = "github:caprinix/settings";
-    caprinix-settings.inputs.nixpkgs.follows = "nixpkgs";
-    caprinix-settings.inputs.snowfall-lib.follows = "snowfall-lib";
-
-    caprinix-devenv.url = "github:caprinix/devenv";
+    caprinix-secrets.inputs.treefmt-nix.follows = "treefmt-nix";
 
     # region misc
     snowfall-lib.url = "github:snowfallorg/lib";
@@ -62,7 +57,6 @@
 
       overlays = with inputs; [
         nur.overlays.default
-        caprinix-devenv.overlays.default
         nix-vscode-extensions.overlays.default
       ];
 
@@ -83,7 +77,9 @@
 
       homes.users = lib.loadSpecialArgs ./homes;
 
-      deploy = {};
+      deploy = {
+        nodes = {};
+      };
 
       outputs-builder = channels: let
         treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;

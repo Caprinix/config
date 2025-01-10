@@ -26,8 +26,8 @@ in {
           config = {
             whitelist = {
               prefix = [
-                "/home/replicapra/Projects/replicapra"
-                "/home/replicapra/Projects/caprinix"
+                "/home/replicapra/Projects/github.com/replicapra"
+                "/home/replicapra/Projects/github.com/caprinix"
               ];
             };
           };

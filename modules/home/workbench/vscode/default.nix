@@ -2,28 +2,14 @@
   lib,
   config,
   pkgs,
-  inputs,
   ...
 }: let
   inherit (lib) mkEnableOption;
   inherit (lib.caprinix) mkIfEnabled enabled;
-  inherit
-    (inputs.caprinix-settings.lib.vscode.helper)
-    extensionStringToPackage
-    getCombinedMixinExtensions
-    mergeSettings
-    getCombinedMixinSettings
-    ;
 
   cfg = config.caprinix.workbench.vscode;
 
-  extensions = map (mixin: extensionStringToPackage pkgs mixin) (getCombinedMixinExtensions [
-    "base"
-  ]);
-  userSettings = mergeSettings [
-    (getCombinedMixinSettings ["base"])
-    (import ./userSettings.nix)
-  ];
+  userSettings = import ./userSettings.nix;
 in {
   options.caprinix.workbench.vscode = {
     enable =
@@ -38,7 +24,7 @@ in {
       vscode =
         enabled
         // {
-          inherit extensions userSettings;
+          inherit userSettings;
           package = pkgs.vscode.fhs;
           enableExtensionUpdateCheck = false;
           enableUpdateCheck = false;

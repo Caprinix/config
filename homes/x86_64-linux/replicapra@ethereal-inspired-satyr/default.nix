@@ -1,4 +1,7 @@
-{lib, ...}: let
+{
+  lib,
+  ...
+}: let
   inherit (lib.caprinix) enabled disabled;
 in {
   config = {
@@ -6,6 +9,7 @@ in {
       programs = {
         atuin = enabled;
         git = enabled;
+        htop = enabled;
         neovim = enabled;
         starship = enabled;
         tmux = enabled;
@@ -17,6 +21,7 @@ in {
           vscode = disabled;
         };
     };
+
     programs.home-manager = enabled;
   };
 }

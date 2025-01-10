@@ -24,6 +24,11 @@ in {
           frequency = cfg.gc.dates;
         };
       }
+      (lib.optionalAttrs (config.sops.secrets ? "nix/secret-config") {
+        extraOptions = ''
+          !include ${config.sops.secrets."nix/secret-config".path}
+        '';
+      })
     ];
     nixpkgs.config = sharedNixpkgsConfig;
     xdg.configFile."nixpkgs/config.nix".text =

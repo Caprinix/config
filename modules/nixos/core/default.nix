@@ -1,20 +1,7 @@
-{lib, ...}: let
-  inherit (lib.caprinix) enabled;
-
-  htop-settings = import ./htop-settings.nix;
-in {
+_: {
   imports = [
     ./nix.nix
     ./users.nix
+    ./boot.nix
   ];
-
-  config = {
-    programs = {
-      htop =
-        enabled
-        // {
-          settings = htop-settings;
-        };
-    };
-  };
 }
