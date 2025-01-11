@@ -11,6 +11,7 @@ in {
         tmux = enabled;
         zsh = enabled;
       };
+      persistence = enabled;
     };
   };
 }

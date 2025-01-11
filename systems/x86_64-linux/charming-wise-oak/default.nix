@@ -17,6 +17,7 @@ in {
           };
         };
       impermanence = enabled;
+      persistence = enabled;
       services = {
         openssh =
           enabled
@@ -26,6 +27,7 @@ in {
               systems.ethereal-inspired-satyr.sshPublicKey
             ];
           };
+        kavita = enabled;
       };
     };
   };
