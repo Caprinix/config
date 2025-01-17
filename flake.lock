@@ -14,11 +14,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736179156,
-        "narHash": "sha256-UsD1f3NpTuPtYEaOqbL6tHggPqAqx275hZ798IZVWnY=",
+        "lastModified": 1737123557,
+        "narHash": "sha256-abL/AVEks6c0kFIILT0624cx+VL9w4O7b8GljDg70XE=",
         "owner": "caprinix",
         "repo": "secrets",
-        "rev": "d97f8b43e2576acde7c1cb1c93e1d3533dc65be0",
+        "rev": "072fca54b2042125f626591e4d418b21e911fa1f",
         "type": "github"
       },
       "original": {
