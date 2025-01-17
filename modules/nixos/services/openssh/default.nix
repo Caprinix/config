@@ -51,7 +51,7 @@ in {
     };
     users.users.replicapra.openssh.authorizedKeys.keys = cfg.authorizedKeys;
     users.users.root.openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFHzMnGcLpIyjvzi/YkMqUdFGhyE92e4t9aSgNmOvY57 master@replicapra"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFHzMnGcLpIyjvzi/YkMqUdFGhyE92e4t9aSgNmOvY57 master@caprinix"
     ];
   };
 }
