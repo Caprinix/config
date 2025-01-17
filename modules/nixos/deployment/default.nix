@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption;
@@ -28,13 +27,18 @@ in {
     security.sudo.extraRules = [
       {
         users = ["deployment"];
+        runAs = "root:root";
         commands = [
           {
             command = "/nix/store/*/activate-rs";
             options = ["NOPASSWD"];
           }
           {
-            command = "${pkgs.coreutils}/bin/rm /tmp/deploy-rs-*";
+            command = "/run/current-system/sw/bin/rm /tmp/deploy-rs-*";
+            options = ["NOPASSWD"];
+          }
+          {
+            command = "/run/current-system/sw/bin/reboot";
             options = ["NOPASSWD"];
           }
         ];
