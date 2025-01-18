@@ -77,9 +77,7 @@
 
       homes.users = lib.loadSpecialArgs ./homes;
 
-      deploy = {
-        nodes = {};
-      };
+      deploy = lib.mkDeploy {inherit (inputs) self;};
 
       outputs-builder = channels: let
         treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;

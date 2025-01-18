@@ -18,6 +18,7 @@ in {
         };
       impermanence = enabled;
       persistence = enabled;
+      deployment = enabled;
       services = {
         openssh =
           enabled
