@@ -12,7 +12,7 @@
           inherit (value.pkgs) system;
         in {
           ${name} = {
-            hostname = "${name}.replicapra.dev";
+            hostname = value.config.networking.fqdn;
             sshUser = "deployment";
             sshOpts = ["-i" "~/.ssh/deployment_id_ed25519"];
             profiles.system = {
