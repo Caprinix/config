@@ -30,6 +30,11 @@ in {
           };
         kavita = enabled;
       };
+      hetzner =
+        enabled
+        // {
+          ipv6 = "2a01:4f8:1c1c:e5fb::1/64";
+        };
     };
   };
 }
