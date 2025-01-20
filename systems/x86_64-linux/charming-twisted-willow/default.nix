@@ -28,6 +28,27 @@ in {
               systems.ethereal-inspired-satyr.sshPublicKey
             ];
           };
+        caddy =
+          enabled
+          // {
+            virtualHosts = {
+              "discord.liebesplural.club" = {
+                extraConfig = ''
+                  redir {$LIEBESPLURAL_DISCORD_LINK} permanent
+                '';
+              };
+              "whatsapp.liebesplural.club" = {
+                extraConfig = ''
+                  redir {$LIEBESPLURAL_WHATSAPP_LINK} permanent
+                '';
+              };
+              "books.liebesplural.club" = {
+                extraConfig = ''
+                  reverse_proxy http://10.0.0.2:5000
+                '';
+              };
+            };
+          };
       };
       hetzner =
         enabled
