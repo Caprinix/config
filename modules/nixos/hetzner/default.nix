@@ -32,6 +32,8 @@ in {
       };
     };
 
+    networking.firewall.trustedInterfaces = ["enp7s0"];
+
     services.qemuGuest.enable = true;
     systemd.services.qemu-guest-agent.path = [pkgs.shadow];
   };
