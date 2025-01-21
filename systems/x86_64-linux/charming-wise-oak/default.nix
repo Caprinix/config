@@ -20,6 +20,7 @@ in {
       persistence = enabled;
       deployment = enabled;
       services = {
+        tailscale = enabled;
         openssh =
           enabled
           // {
