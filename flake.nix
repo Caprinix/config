@@ -34,6 +34,9 @@
 
     deploy-rs.url = "github:serokell/deploy-rs";
     deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-24.11";
+    simple-nixos-mailserver.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: let
@@ -67,6 +70,7 @@
         }
         disko.nixosModules.disko
         impermanence.nixosModules.impermanence
+        simple-nixos-mailserver.nixosModules.mailserver
         caprinix-secrets.nixosModules.secrets
       ];
 
