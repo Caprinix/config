@@ -29,6 +29,7 @@ in {
               systems.ethereal-inspired-satyr.sshPublicKey
             ];
           };
+        mailserver = enabled;
       };
       hetzner =
         enabled
