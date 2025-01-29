@@ -31,6 +31,7 @@ in {
           };
           "noreply@replicapra.dev" = {
             sendOnly = true;
+            aliases = map (domain: "noreply@${domain}") config.mailserver.domains;
             hashedPasswordFile = config.sops.secrets."services/mailserver/accounts/noreply/password".path;
           };
         };
