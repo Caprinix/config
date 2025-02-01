@@ -16,8 +16,8 @@ in {
     mailserver =
       enabled
       // {
-        inherit (config.networking) fqdn;
         domains = ["replicapra.dev" "liebesplural.club"];
+        fqdn = "mx.replicapra.dev";
         dkimKeyBits = 4096;
         openFirewall = true;
         enableImap = false;
@@ -35,6 +35,7 @@ in {
             hashedPasswordFile = config.sops.secrets."services/mailserver/accounts/noreply/password".path;
           };
         };
+        lmtpSaveToDetailMailbox = "yes";
         mailboxes = {
           Archive = {
             auto = "subscribe";
@@ -59,6 +60,7 @@ in {
             autoexpunge = "30d";
           };
         };
+        hierarchySeparator = "/";
         useFsLayout = true;
       };
 
