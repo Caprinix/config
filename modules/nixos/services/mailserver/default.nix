@@ -19,10 +19,13 @@ in {
         domains = ["replicapra.dev" "liebesplural.club"];
         fqdn = "mx.replicapra.dev";
         dkimKeyBits = 4096;
-        openFirewall = true;
-        enableImap = false;
-        enableSubmission = false;
         enableManageSieve = true;
+        enableImap = true;
+        enableImapSsl = true;
+        enablePop3 = true;
+        enablePop3Ssl = true;
+        enableSubmission = true;
+        enableSubmissionSsl = true;
         certificateScheme = "acme-nginx";
         loginAccounts = {
           "default@replicapra.dev" = {
@@ -63,6 +66,13 @@ in {
         hierarchySeparator = "/";
         useFsLayout = true;
       };
+
+    networking.firewall.allowedTCPPorts = [
+      25
+      465
+      993
+      4190
+    ];
 
     security.acme.acceptTerms = true;
     security.acme.defaults.email = "security@replicapra.dev";
