@@ -19,11 +19,13 @@ in {
         };
       impermanence = enabled;
       persistence = enabled;
+      deployment = enabled;
       programs = {
         zsh = enabled;
         steam = enabled;
       };
       services = {
+        tailscale = enabled;
         openssh =
           enabled
           // {
