@@ -73,8 +73,5 @@ in {
       993
       4190
     ];
-
-    security.acme.acceptTerms = true;
-    security.acme.defaults.email = "security@replicapra.dev";
   };
 }
