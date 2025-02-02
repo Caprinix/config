@@ -16,13 +16,16 @@ in {
     mailserver =
       enabled
       // {
-        inherit (config.networking) fqdn;
         domains = ["replicapra.dev" "liebesplural.club"];
+        fqdn = "mx.replicapra.dev";
         dkimKeyBits = 4096;
-        openFirewall = true;
-        enableImap = false;
-        enableSubmission = false;
         enableManageSieve = true;
+        enableImap = true;
+        enableImapSsl = true;
+        enablePop3 = true;
+        enablePop3Ssl = true;
+        enableSubmission = true;
+        enableSubmissionSsl = true;
         certificateScheme = "acme-nginx";
         loginAccounts = {
           "default@replicapra.dev" = {
@@ -31,9 +34,11 @@ in {
           };
           "noreply@replicapra.dev" = {
             sendOnly = true;
+            aliases = map (domain: "noreply@${domain}") config.mailserver.domains;
             hashedPasswordFile = config.sops.secrets."services/mailserver/accounts/noreply/password".path;
           };
         };
+        lmtpSaveToDetailMailbox = "yes";
         mailboxes = {
           Archive = {
             auto = "subscribe";
@@ -58,10 +63,15 @@ in {
             autoexpunge = "30d";
           };
         };
+        hierarchySeparator = "/";
         useFsLayout = true;
       };
 
-    security.acme.acceptTerms = true;
-    security.acme.defaults.email = "security@replicapra.dev";
+    networking.firewall.allowedTCPPorts = [
+      25
+      465
+      993
+      4190
+    ];
   };
 }

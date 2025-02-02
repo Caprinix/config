@@ -30,6 +30,7 @@ in {
             ];
           };
         mailserver = enabled;
+        nginx = enabled;
       };
       hetzner =
         enabled
