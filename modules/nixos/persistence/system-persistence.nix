@@ -17,6 +17,7 @@ _: {
     "/etc/machine-id"
     "/var/lib/sops/age/key.txt"
     {
+      file = "/var/keys/secret_file";
       parentDirectory = {
         mode = "u=rwx,g=,o=";
       };
