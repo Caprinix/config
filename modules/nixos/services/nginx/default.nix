@@ -16,15 +16,19 @@ in {
     };
   };
   config = mkIfEnabled cfg {
-    security.acme.acceptTerms = true;
-    security.acme.defaults.email = "security@replicapra.dev";
-
     services.nginx =
       enabled
       // {
+        inherit (cfg) virtualHosts;
         recommendedOptimisation = true;
         recommendedTlsSettings = true;
         recommendedGzipSettings = true;
+        recommendedProxySettings = true;
       };
+
+    security.acme.acceptTerms = true;
+    security.acme.defaults.email = "security@replicapra.dev";
+
+    networking.firewall.allowedTCPPorts = [80 443];
   };
 }

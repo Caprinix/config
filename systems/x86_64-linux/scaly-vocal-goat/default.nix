@@ -30,7 +30,23 @@ in {
             ];
           };
         mailserver = enabled;
-        nginx = enabled;
+        nginx =
+          enabled
+          // {
+            virtualHosts = {
+              "ntfy.replicapra.dev" = {
+                forceSSL = true;
+                enableACME = true;
+                locations = {
+                  "/" = {
+                    proxyPass = "http://127.0.0.1:2586/";
+                    proxyWebsockets = true;
+                  };
+                };
+              };
+            };
+          };
+        ntfy = enabled;
       };
       hetzner =
         enabled
