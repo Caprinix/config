@@ -15,6 +15,7 @@
   homePersistenceFiles = builtins.filter (name: builtins.baseNameOf name == "home-persistence.nix") (get-nix-files-recursive flakeRoot);
   allHomePersistenceImports = builtins.map (file:
     import file {
+      inherit lib;
       systemConfig = osConfig;
       homeConfig = config;
     })
