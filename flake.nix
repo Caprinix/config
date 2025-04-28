@@ -7,6 +7,10 @@
     #region snowfallorg
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
+
+    #region misc
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: let
@@ -25,5 +29,11 @@
       };
     };
   in
-    lib.mkFlake {};
+    lib.mkFlake {
+      outputs-builder = channels: let
+        treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;
+      in {
+        formatter = treefmtEval.config.build.wrapper;
+      };
+    };
 }
