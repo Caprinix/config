@@ -9,5 +9,21 @@
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs: {};
+  outputs = inputs: let
+    lib = inputs.snowfall-lib.mkLib {
+      inherit inputs;
+
+      src = ./.;
+
+      snowfall = rec {
+        namespace = "caprinix";
+
+        meta = {
+          name = namespace;
+          title = namespace;
+        };
+      };
+    };
+  in
+    lib.mkFlake {};
 }
