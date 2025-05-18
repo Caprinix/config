@@ -42,7 +42,10 @@
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         disko.nixosModules.disko
+        impermanence.nixosModules.impermanence
       ];
+
+      homes.modules = with inputs; [impermanence.nixosModules.home-manager.impermanence];
 
       outputs-builder = channels: let
         treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;
