@@ -12,6 +12,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     #region misc
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -34,8 +37,7 @@
     };
   in
     lib.mkFlake {
-
-       systems.modules.nixos = with inputs; [
+      systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
       ];
 
