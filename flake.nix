@@ -39,6 +39,7 @@
     lib.mkFlake {
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
+        disko.nixosModules.disko
       ];
 
       outputs-builder = channels: let
