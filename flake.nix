@@ -26,7 +26,7 @@
     lib = inputs.snowfall-lib.mkLib {
       inherit inputs;
 
-      src = ./.;
+      src = builtins.path { path = ./.; name = "caprinix-config"; };
 
       snowfall = rec {
         namespace = "caprinix";
