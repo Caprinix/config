@@ -26,5 +26,7 @@
           title = namespace;
         };
       };
+
+      systems.modules.nixos = with inputs; [home-manager.nixosModules.home-manager];
     };
 }
