@@ -8,11 +8,20 @@
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, ... }: {
+  outputs =
+    inputs:
+    inputs.snowfall-lib.mkFlake {
+      inherit inputs;
 
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
+      src = builtins.path { path = ./.; name = "caprinix-config"; };
 
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
+      snowfall = rec {
+        namespace = "caprinix";
 
-  };
+        meta = {    
+          name = namespace;
+          title = namespace;
+        };
+      };
+    };
 }
