@@ -9,6 +9,11 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    caprinix-essentials.url = "github:caprinix/essentials";
+    caprinix-essentials.inputs.nixpkgs.follows = "nixpkgs";
+    caprinix-essentials.inputs.snowfall-lib.follows = "snowfall-lib";
+    caprinix-essentials.inputs.treefmt-nix.follows = "treefmt-nix";
   };
 
   outputs = inputs: let
