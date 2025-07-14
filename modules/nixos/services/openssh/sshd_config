@@ -1,0 +1,14 @@
+AcceptEnv LANG LC_*
+AllowAgentForwarding no
+AllowStreamLocalForwarding no
+AllowTcpForwarding no
+ClientAliveCountMax 2
+ClientAliveInterval 250
+DisableForwarding yes
+MaxAuthTries 3
+MaxSessions 3
+PermitEmptyPasswords no
+PermitTunnel no
+PermitUserEnvironment no
+PrintLastLog yes
+PubkeyAuthentication yes
