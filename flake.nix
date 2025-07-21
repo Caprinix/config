@@ -49,8 +49,13 @@
       channels-config = lib.sharedNixpkgsConfig;
 
       systems.modules.nixos = with inputs; [
-        home-manager.nixosModules.home-manager
         disko.nixosModules.disko
+        home-manager.nixosModules.home-manager
+        impermanence.nixosModules.impermanence
+      ];
+
+      homes.modules = with inputs; [
+        impermanence.nixosModules.home-manager.impermanence
       ];
 
       outputs-builder = channels: let
