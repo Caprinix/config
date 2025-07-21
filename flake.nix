@@ -44,6 +44,11 @@
     lib.mkFlake {
       channels-config = lib.sharedNixpkgsConfig;
 
+      systems.modules.nixos = with inputs; [
+        home-manager.nixosModules.home-manager
+        disko.nixosModules.disko
+      ];
+
       outputs-builder = channels: let
         treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;
       in {
