@@ -10,11 +10,15 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    #region nix-community
+
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    impermanence.url = "github:nix-community/impermanence";
 
     caprinix-essentials.url = "github:caprinix/essentials";
     caprinix-essentials.inputs.nixpkgs.follows = "nixpkgs";
@@ -45,8 +49,13 @@
       channels-config = lib.sharedNixpkgsConfig;
 
       systems.modules.nixos = with inputs; [
-        home-manager.nixosModules.home-manager
         disko.nixosModules.disko
+        home-manager.nixosModules.home-manager
+        impermanence.nixosModules.impermanence
+      ];
+
+      homes.modules = with inputs; [
+        impermanence.nixosModules.home-manager.impermanence
       ];
 
       outputs-builder = channels: let
