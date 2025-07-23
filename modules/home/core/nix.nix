@@ -23,6 +23,10 @@ in {
         gc = {
           frequency = cfg.gc.dates;
         };
+        extraOptions = ''
+          !include nix.custom.conf
+          !include nix.secret.conf
+        '';
       }
     ];
     xdg.configFile."nixpkgs/config.nix".text =
