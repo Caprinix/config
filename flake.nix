@@ -20,10 +20,18 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
+    #region caprinix
+
     caprinix-essentials.url = "github:caprinix/essentials";
     caprinix-essentials.inputs.nixpkgs.follows = "nixpkgs";
     caprinix-essentials.inputs.snowfall-lib.follows = "snowfall-lib";
     caprinix-essentials.inputs.treefmt-nix.follows = "treefmt-nix";
+
+    caprinix-secrets.url = "github:caprinix/secrets";
+    caprinix-secrets.inputs.nixpkgs.follows = "nixpkgs";
+    caprinix-secrets.inputs.snowfall-lib.follows = "snowfall-lib";
+    caprinix-secrets.inputs.treefmt-nix.follows = "treefmt-nix";
+    caprinix-secrets.inputs.home-manager.follows = "home-manager";
   };
 
   outputs = inputs: let

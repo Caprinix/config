@@ -26,6 +26,36 @@
         "type": "github"
       }
     },
+    "caprinix-secrets": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "snowfall-lib": [
+          "snowfall-lib"
+        ],
+        "sops-nix": "sops-nix",
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753301138,
+        "narHash": "sha256-I/3Ppd/QlHX4HF4eV9dJBBn2EGp0rYYXtG/fxbHf+/8=",
+        "owner": "caprinix",
+        "repo": "secrets",
+        "rev": "a0373af6655bff09e55a60e7a6ad48d05b7d5ea4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "caprinix",
+        "repo": "secrets",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -153,6 +183,7 @@
     "root": {
       "inputs": {
         "caprinix-essentials": "caprinix-essentials",
+        "caprinix-secrets": "caprinix-secrets",
         "disko": "disko",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
@@ -180,6 +211,27 @@
       "original": {
         "owner": "snowfallorg",
         "repo": "lib",
+        "type": "github"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "caprinix-secrets",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751606940,
+        "narHash": "sha256-KrDPXobG7DFKTOteqdSVeL1bMVitDcy7otpVZWDE6MA=",
+        "owner": "mic92",
+        "repo": "sops-nix",
+        "rev": "3633fc4acf03f43b260244d94c71e9e14a2f6e0d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mic92",
+        "repo": "sops-nix",
         "type": "github"
       }
     },
