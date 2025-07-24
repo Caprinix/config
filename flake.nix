@@ -60,10 +60,12 @@
         disko.nixosModules.disko
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
+        caprinix-secrets.nixosModules.secrets
       ];
 
       homes.modules = with inputs; [
         impermanence.nixosModules.home-manager.impermanence
+        caprinix-secrets.homeModules.secrets
       ];
 
       outputs-builder = channels: let
