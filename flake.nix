@@ -63,11 +63,13 @@
         disko.nixosModules.disko
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
+        nix-index-database.nixosModules.nix-index
         caprinix-secrets.nixosModules.secrets
       ];
 
       homes.modules = with inputs; [
         impermanence.nixosModules.home-manager.impermanence
+        nix-index-database.homeModules.nix-index
         caprinix-secrets.homeModules.secrets
       ];
 
