@@ -3,7 +3,8 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption;
+  inherit (lib) mkEnableOption mkMerge;
+  inherit (lib.caprinix.shared.programs) sharedZshConfig;
   inherit (lib.caprinix-essentials.modules) mkIfEnabled enabled;
 
   cfg = config.caprinix.programs.zsh;
@@ -14,27 +15,19 @@ in {
 
   config = mkIfEnabled cfg {
     programs = {
-      zsh =
+      zsh = mkMerge [
         enabled
-        // {
-          autosuggestions =
-            enabled
-            // {
-              async = true;
-            };
+        sharedZshConfig
+        {
+          autosuggestions = {
+            async = true;
+          };
           enableBashCompletion = true;
-          enableCompletion = true;
           enableGlobalCompInit = true;
-          ohMyZsh = enabled;
-          syntaxHighlighting =
-            enabled
-            // {
-              highlighters = [
-                "main"
-                "brackets"
-              ];
-            };
-        };
+        }
+      ];
     };
+
+    environment.pathsToLink = ["/share/zsh"];
   };
 }
