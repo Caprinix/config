@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib) mkOption mkMerge types;
-  inherit (lib.caprinix) sharedNixConfig sharedNixpkgsConfig;
+  inherit (lib.caprinix.shared) sharedNixConfig sharedNixpkgsConfig;
 
   cfg = config.nix;
 in {

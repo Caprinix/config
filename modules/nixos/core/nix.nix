@@ -1,6 +1,6 @@
 {lib, ...}: let
   inherit (lib) mkMerge;
-  inherit (lib.caprinix) sharedNixConfig;
+  inherit (lib.caprinix.shared) sharedNixConfig;
 in {
   config = {
     nix = mkMerge [
