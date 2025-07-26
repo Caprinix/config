@@ -18,6 +18,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     impermanence.url = "github:nix-community/impermanence";
 
     #region caprinix
@@ -60,13 +63,17 @@
         disko.nixosModules.disko
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
+        nix-index-database.nixosModules.nix-index
         caprinix-secrets.nixosModules.secrets
       ];
 
       homes.modules = with inputs; [
         impermanence.nixosModules.home-manager.impermanence
+        nix-index-database.homeModules.nix-index
         caprinix-secrets.homeModules.secrets
       ];
+
+      homes.users = lib.loadHomeSpecialArgs ./homes;
 
       outputs-builder = channels: let
         treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;
