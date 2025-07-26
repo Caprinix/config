@@ -73,6 +73,8 @@
         caprinix-secrets.homeModules.secrets
       ];
 
+      homes.users = lib.loadHomeSpecialArgs ./homes;
+
       outputs-builder = channels: let
         treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;
       in {
