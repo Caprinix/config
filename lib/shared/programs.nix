@@ -13,7 +13,6 @@ in {
             "completion"
           ];
         };
-      histFile = "$HOME/.zshistory";
       histSize = 10000;
       ohMyZsh =
         enabled
