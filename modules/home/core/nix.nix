@@ -1,28 +1,17 @@
-{
-  lib,
-  config,
-  ...
-}: let
-  inherit (lib) mkOption mkMerge types;
+{lib, ...}: let
+  inherit (lib) mkAliasOptionModule mkMerge;
   inherit (lib.caprinix.shared) sharedNixConfig sharedNixpkgsConfig;
-
-  cfg = config.nix;
 in {
-  options.nix = {
-    gc = {
-      # small workaround as it's called gc.dates
-      # in nixos but gc.frequency in home-manger
-      dates = mkOption {type = types.str;};
-    };
-  };
+  imports = [
+    (mkAliasOptionModule
+      ["nix" "gc" "dates"]
+      ["nix" "gc" "frequency"])
+  ];
 
   config = {
     nix = mkMerge [
       sharedNixConfig
       {
-        gc = {
-          frequency = cfg.gc.dates;
-        };
         extraOptions = ''
           !include nix.custom.conf
           !include nix.secret.conf
