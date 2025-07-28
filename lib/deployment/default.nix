@@ -1,9 +1,10 @@
-{lib, ...}: {
-  mkDeploy = {
-    self,
-    overrides ? {},
-  }: let
-    systems = self.nixosConfigurations;
+{
+  lib,
+  inputs,
+  ...
+}: {
+  mkDeploy = {overrides ? {}}: let
+    systems = inputs.self.nixosConfigurations;
     nodes = lib.foldlAttrs (acc: name: value:
       acc
       // (
