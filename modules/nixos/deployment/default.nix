@@ -24,5 +24,25 @@ in {
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHxakIX6l4Doi/QPTI884nLWyBeaPN96qcp46iUEuUa3 deployment@caprinix"
       ];
     };
+    security.sudo.extraRules = [
+      {
+        users = ["deployment"];
+        runAs = "root:root";
+        commands = [
+          {
+            command = "/nix/store/*/activate-rs";
+            options = ["NOPASSWD"];
+          }
+          {
+            command = "/run/current-system/sw/bin/rm /tmp/deploy-rs-*";
+            options = ["NOPASSWD"];
+          }
+          {
+            command = "/run/current-system/sw/bin/reboot";
+            options = ["NOPASSWD"];
+          }
+        ];
+      }
+    ];
   };
 }
