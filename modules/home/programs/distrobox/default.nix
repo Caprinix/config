@@ -30,12 +30,12 @@ in {
     home.packages = with pkgs; [
       distrobox-tui
     ];
-  };
 
-  assertions = [
-    {
-      assertion = osConfig.virtualisation.podman.enable || osConfig.virtualisation.docker.enable;
-      message = "Distrobox needs a container manager. Please install one of podman or docker";
-    }
-  ];
+    assertions = [
+      {
+        assertion = osConfig.virtualisation.podman.enable || osConfig.virtualisation.docker.enable;
+        message = "Distrobox needs a container manager. Please install one of podman or docker";
+      }
+    ];
+  };
 }

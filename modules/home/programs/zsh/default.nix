@@ -38,7 +38,6 @@ in {
         sharedZshConfig
         {
           autocd = true;
-          defaultKeymap = "vicmd";
           dotDir = "${config.xdg.configHome}/zsh";
           history = {
             append = true;
@@ -46,6 +45,7 @@ in {
             extended = true;
             ignoreDups = true;
             ignoreSpace = true;
+            path = "${config.programs.zsh.dotDir}/.zshistory";
           };
           oh-my-zsh = {
             extraConfig = ''

@@ -10,6 +10,9 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+
     #region nix-community
 
     disko.url = "github:nix-community/disko";
@@ -74,6 +77,8 @@
       ];
 
       homes.users = lib.loadHomeSpecialArgs ./homes;
+
+      deploy = lib.mkDeploy {};
 
       outputs-builder = channels: let
         treefmtEval = inputs.treefmt-nix.lib.evalModule channels.nixpkgs ./treefmt.nix;
